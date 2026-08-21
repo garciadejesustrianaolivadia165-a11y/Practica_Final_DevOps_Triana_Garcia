@@ -1,0 +1,40 @@
+{
+  "name": "practica-final-devops",
+  "version": "1.0.0",
+  "description": "Practica Final DevOps CI/CD con GitHub Actions, Docker Hub y Render - Triana Garcia",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --runInBand"
+  },
+  "keywords": [
+    "devops",
+    "ci-cd",
+    "github-actions",
+    "docker",
+    "render",
+    "express"
+  ],
+  "author": "Triana Garcia",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js"
+    ]
+  }
+}

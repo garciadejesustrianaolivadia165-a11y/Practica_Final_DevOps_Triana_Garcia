@@ -1,0 +1,16 @@
+# Blueprint de Render (https://render.com/docs/blueprint-spec)
+# Permite crear el servicio web desde el repositorio con "New > Blueprint".
+services:
+  - type: web
+    name: practica-final-devops
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    region: oregon
+    branch: main
+    autoDeployTrigger: commit
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production

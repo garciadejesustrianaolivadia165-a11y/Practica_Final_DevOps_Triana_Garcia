@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hola Mundo - Practica Final DevOps</title>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #1e3a8a 0%, #6d28d9 50%, #be185d 100%);
+      color: #fff;
+      padding: 1.5rem;
+    }
+    .tarjeta {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+    h1 { font-size: clamp(2rem, 7vw, 3.25rem); margin: 0 0 .5rem; }
+    .sub { opacity: .85; margin: 0 0 1.75rem; font-size: 1.05rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 1.75rem; }
+    .pill {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      padding: .4rem .9rem;
+      font-size: .85rem;
+    }
+    button {
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      border: 0;
+      border-radius: 999px;
+      padding: .8rem 1.8rem;
+      background: #fff;
+      color: #6d28d9;
+      transition: transform .15s ease;
+    }
+    button:hover { transform: translateY(-2px); }
+    #salida {
+      margin-top: 1.25rem;
+      min-height: 1.5rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .9rem;
+      opacity: .9;
+      word-break: break-word;
+    }
+    footer { margin-top: 2rem; font-size: .8rem; opacity: .7; }
+  </style>
+</head>
+<body>
+  <main class="tarjeta">
+    <h1>Hola Mundo</h1>
+    <p class="sub">Practica Final DevOps &mdash; CI/CD con GitHub Actions</p>
+
+    <div class="pills">
+      <span class="pill">Node.js + Express</span>
+      <span class="pill">Jest + Supertest</span>
+      <span class="pill">Docker Hub</span>
+      <span class="pill">Render</span>
+    </div>
+
+    <button id="boton" type="button">Llamar a /api/saludo</button>
+    <div id="salida"></div>
+
+    <footer>Autora: Triana Garcia</footer>
+  </main>
+
+  <script>
+    document.getElementById('boton').addEventListener('click', async () => {
+      const salida = document.getElementById('salida');
+      salida.textContent = 'Consultando...';
+      try {
+        const res = await fetch('/api/saludo');
+        const datos = await res.json();
+        salida.textContent = JSON.stringify(datos, null, 2);
+      } catch (err) {
+        salida.textContent = 'Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>

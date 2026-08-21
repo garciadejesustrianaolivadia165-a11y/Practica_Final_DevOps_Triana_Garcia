@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log*
+coverage
+.git
+.github
+.gitignore
+tests
+Dockerfile
+.dockerignore
+README.md
+CLAUDE.md
+render.yaml
+*.md
+.env
+.env.*
