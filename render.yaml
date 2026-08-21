@@ -1,5 +1,5 @@
 # Blueprint de Render (https://render.com/docs/blueprint-spec)
-# Permite crear el servicio web desde el repositorio con "New > Blueprint".
+# Crear el servicio desde el dashboard con "New > Blueprint" apuntando a este repo.
 services:
   - type: web
     name: practica-final-devops
@@ -9,7 +9,11 @@ services:
     plan: free
     region: oregon
     branch: main
-    autoDeployTrigger: commit
+    # Desactivado a proposito: quien dispara el despliegue es el job "deploy"
+    # del workflow de GitHub Actions, llamando al Deploy Hook. Si Render
+    # tambien desplegara por su cuenta en cada commit, habria dos despliegues
+    # compitiendo por cada push.
+    autoDeployTrigger: "off"
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
