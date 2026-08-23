@@ -14,7 +14,7 @@ en Docker Hub y despliegue automatico en Render.
 | --- | --- |
 | Repositorio | https://github.com/garciadejesustrianaolivadia165-a11y/Practica_Final_DevOps_Triana_Garcia |
 | Aplicacion en produccion | _(pendiente: se rellena al crear el servicio en Render)_ |
-| Imagen en Docker Hub | _(pendiente: `<usuario>/practica-final-devops`)_ |
+| Imagen en Docker Hub | https://hub.docker.com/r/trianagarcia/practica-final-devops |
 
 ---
 
@@ -79,7 +79,7 @@ docker run --rm -p 3000:3000 practica-final-devops
 O directamente desde Docker Hub:
 
 ```bash
-docker run --rm -p 3000:3000 <usuario>/practica-final-devops:latest
+docker run --rm -p 3000:3000 trianagarcia/practica-final-devops:latest
 ```
 
 ---
