@@ -48,16 +48,17 @@ El puerto se lee de `process.env.PORT` (Render lo inyecta en runtime). No fijarl
 `test` → `docker` → `deploy`.
 
 - `docker` se salta en pull request. Construye siempre la imagen; solo hace
-  `push` a Docker Hub si `DOCKERHUB_USERNAME` y `DOCKERHUB_TOKEN` existen
-  (comprobado en el step `credenciales`, que expone `outputs.disponibles`).
+  `push` a Docker Hub si existe `DOCKERHUB_TOKEN` (comprobado en el step
+  `credenciales`, que expone `outputs.disponibles`).
   Este patron mantiene el CI en verde antes de configurar los secretos: emite
   un `::warning::` en vez de fallar.
 - `deploy` solo corre en `main`. Hace `POST` al Deploy Hook de Render y despues
-  hace polling de `<RENDER_APP_URL>/health` hasta 5 minutos.
+  hace polling de `$APP_URL/health` hasta 5 minutos.
 
-Secretos requeridos: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`,
-`RENDER_DEPLOY_HOOK_URL`. Variable requerida: `RENDER_APP_URL` (sin barra
-final).
+Solo hay dos secretos: `DOCKERHUB_TOKEN` y `RENDER_DEPLOY_HOOK_URL`. El
+usuario de Docker Hub (`DOCKERHUB_USER`) y la URL publica (`APP_URL`) no son
+confidenciales y viven en el bloque `env:` del workflow; al reutilizar el
+repo en otra cuenta hay que cambiarlos ahi.
 
 ## Docker
 

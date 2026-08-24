@@ -13,7 +13,7 @@ en Docker Hub y despliegue automatico en Render.
 | Recurso | URL |
 | --- | --- |
 | Repositorio | https://github.com/garciadejesustrianaolivadia165-a11y/Practica_Final_DevOps_Triana_Garcia |
-| Aplicacion en produccion | _(pendiente: se rellena al crear el servicio en Render)_ |
+| Aplicacion en produccion | https://practica-final-devops-tj2y.onrender.com |
 | Imagen en Docker Hub | https://hub.docker.com/r/trianagarcia/practica-final-devops |
 
 ---
@@ -27,7 +27,7 @@ en Docker Hub y despliegue automatico en Render.
 | `/health` | GET | Health check usado por Render y por el `HEALTHCHECK` de Docker |
 
 ```bash
-curl https://<tu-app>.onrender.com/api/saludo?nombre=Triana
+curl https://practica-final-devops-tj2y.onrender.com/api/saludo?nombre=Triana
 # {"mensaje":"Hola Triana!","app":"Practica Final DevOps","autor":"Triana Garcia","version":"1.0.0"}
 ```
 
@@ -120,22 +120,18 @@ En el repositorio: **Settings → Secrets and variables → Actions → New repo
 
 | Secreto | Valor |
 | --- | --- |
-| `DOCKERHUB_USERNAME` | Tu usuario de Docker Hub |
 | `DOCKERHUB_TOKEN` | Access Token de Docker Hub (Account Settings → Personal access tokens, permiso *Read & Write*) |
 | `RENDER_DEPLOY_HOOK_URL` | Deploy Hook del servicio en Render (Settings → Deploy Hook) |
 
-### 2. Variable de GitHub
+Son los dos unicos valores confidenciales del proyecto: uno permite publicar
+imagenes en Docker Hub y el otro lanzar despliegues en Render.
 
-En la pestaña **Variables** de la misma pantalla:
+El usuario de Docker Hub y la URL publica de la app **no** son secretos, asi
+que estan a la vista en el bloque `env:` del workflow (`DOCKERHUB_USER` y
+`APP_URL`). Si clonas este repo para tu propia cuenta, cambia esos dos
+valores ahi.
 
-| Variable | Valor |
-| --- | --- |
-| `RENDER_APP_URL` | URL publica de la app, p. ej. `https://practica-final-devops.onrender.com` (sin barra final) |
-
-Se usa para verificar el despliegue y para mostrar el enlace en la pestana
-*Environments* del repositorio.
-
-### 3. Servicio en Render
+### 2. Servicio en Render
 
 1. En https://dashboard.render.com → **New → Web Service**.
 2. Conectar este repositorio de GitHub.
