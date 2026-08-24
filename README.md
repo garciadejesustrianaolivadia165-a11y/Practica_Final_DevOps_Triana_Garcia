@@ -4,6 +4,9 @@ Aplicacion web **Hola Mundo** en Node.js + Express con pipeline completo de
 integracion y despliegue continuo: pruebas unitarias, imagen Docker publicada
 en Docker Hub y despliegue automatico en Render.
 
+[![CI/CD](https://github.com/garciadejesustrianaolivadia165-a11y/Practica_Final_DevOps_Triana_Garcia/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/garciadejesustrianaolivadia165-a11y/Practica_Final_DevOps_Triana_Garcia/actions/workflows/ci-cd.yml)
+[![Docker Hub](https://img.shields.io/docker/v/trianagarcia/practica-final-devops?label=docker%20hub&sort=date)](https://hub.docker.com/r/trianagarcia/practica-final-devops)
+
 **Autora:** Triana Garcia
 
 ---
